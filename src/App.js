@@ -9,6 +9,7 @@ import Chat from "./pages/Chat";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { AppContext, socket } from "./context/appContext";
+import Followers from "./pages/followers";
 
 function App() {
     const [rooms, setRooms] = useState([]);
@@ -28,6 +29,7 @@ function App() {
                         <>
                             <Route path="/login" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
+                            <Route path="/followers" element={<Followers/>}/>
                         </>
                     )}
                     <Route path="/chat" element={<Chat />} />
