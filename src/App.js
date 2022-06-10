@@ -29,14 +29,26 @@ function App() {
                         <>
                             <Route path="/login" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
-                            <Route path="/followers" element={<Followers/>}/>
+                           
+                          
                         </>
                     )}
                     <Route path="/chat" element={<Chat />} />
+                    <Route path="/followers" element={<Followers/>}/>
+                    {/* <h1>
+                                heloo
+                            </h1> */}
                 </Routes>
             </BrowserRouter>
         </AppContext.Provider>
     );
 }
 
+
+
+
 export default App;
+
+
+
+

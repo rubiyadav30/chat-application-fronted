@@ -61,16 +61,7 @@ function Sidebar() {
         joinRoom(roomId, false);
     }
 
-    function conection(userid,followerid){
-        fetch("http://localhost:5001/rooms")
-            .then((res) => res.json())
-            .then((data) => setRooms(data));
-            
-
-
-
-    }
-
+  
     if (!user) {
         return <></>;
     }
@@ -92,7 +83,7 @@ function Sidebar() {
                             <img src={member.picture} className="member-status-img" />
                             {member.status == "online" ? <i className="fas fa-circle sidebar-online-status"></i> : <i className="fas fa-circle sidebar-offline-status"></i>}
                         </Col>
-                        <Col xs={5}>
+                        <Col xs={9}>
                             {member.name}
                             {member._id === user?._id && " (You)"}
                             {member.status == "offline" && " (Offline)"}
@@ -102,10 +93,8 @@ function Sidebar() {
 
                         </Col>
 
-                        <Col>
-                        <input type="submit" name="follow" onClick={conection(user.id,member.id)}  />
-
-                        </Col>
+                        
+                        
                     </Row>
                 </ListGroup.Item>
             ))}
