@@ -4,6 +4,7 @@ import { useSignupUserMutation } from "../services/appApi";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import botImg from "../assets/bot.jpeg";
+import axios from "axios";
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -26,24 +27,30 @@ function Signup() {
         }
     }
 
+    //   file_upload----
     async function uploadImage() {
-        const data = new FormData();
-        data.append("file", image);
-        data.append("upload_preset", "your-preset-here");
-        try {
-            setUploadingImg(true);
-            let res = await fetch("https://api.cloudinary.com/v1_1/your-username-here/image/upload", {
-                method: "post",
-                body: data,
-            });
-            const urlData = await res.json();
-            setUploadingImg(false);
-            return urlData.url;
-        } catch (error) {
-            setUploadingImg(false);
-            console.log(error);
+    let data = new FormData()
+    data.append("user_file", image)
+    let config = {
+        headers: {
+            "content-type": "mutlipart/form-data"
         }
     }
+    setUploadingImg(true)
+    let a = ""
+     await axios.post("http://127.0.0.1:5001/upload", data, config)
+
+        .then(res => {
+          a =  res.data.filename
+            
+            setUploadingImg(false);
+           
+        })
+        return  "http://127.0.0.1:5001/uploads/" +a;
+
+
+}
+  
 
     async function handleSignup(e) {
         e.preventDefault();
