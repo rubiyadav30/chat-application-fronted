@@ -30,6 +30,7 @@ function Sidebar() {
 
     useEffect(() => {
         if (user) {
+
             setCurrentRoom("general");
             getRooms();
             socket.emit("join-room", "general");
@@ -37,8 +38,33 @@ function Sidebar() {
         }
     }, []);
 
+    function friends(data) {
+        fetch("http://localhost:5001/con/friends/" + user._id)
+            .then((res1) => res1.json()).then((data1) => {
+                let a = []
+                console.log(data1,"conection")
+                for (let i = 0; i < data.length; i++) {
+                    for (let j = 0; j < data1.length; j++) {
+                        if (data[i]._id == data1[j].followersID && user._id == data1[j].userID) {
+                            a.push(data[i])
+
+                        }
+                        else if (data[i]._id == data1[j].userID && user._id == data1[j].followersID) {
+                            a.push(data[i])
+
+                        }
+                    }
+
+                }
+
+                // setMembers()
+                setMembers(a)
+            })}
+
+
     socket.off("new-user").on("new-user", (payload) => {
-        setMembers(payload);
+        console.log("payload", payload)
+        friends(payload);
     });
 
     function getRooms() {
@@ -61,7 +87,7 @@ function Sidebar() {
         joinRoom(roomId, false);
     }
 
-  
+
     if (!user) {
         return <></>;
     }
@@ -93,8 +119,8 @@ function Sidebar() {
 
                         </Col>
 
-                        
-                        
+
+
                     </Row>
                 </ListGroup.Item>
             ))}

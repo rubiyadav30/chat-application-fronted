@@ -48,6 +48,7 @@ function Followers() {
 
     }
 
+    
     function getfollower(data) {
 
         fetch("http://localhost:5001/con/follower/" + user._id)
@@ -72,7 +73,7 @@ function Followers() {
     }
 
     function conection(followerid) {
-        console.log("hlooo")
+        // console.log("hlooo")
         const form = { followersID: followerid, userID: user._id }
         axios.post("http://localhost:5001/con/conection", form)
             .then((res) => {
@@ -122,7 +123,7 @@ function Followers() {
 
                                             {member.conection}
                                         </span></>
-                                    ) : (<>{member.deleteid !== "" && member.deleteid !== null && member.deleteid !== undefined ? (<><input type="submit" value="delete" onClick={() =>deleteconection(member.deleteid)} />
+                                    ) : (<>{member.deleteid !== "" && member.deleteid !== null && member.deleteid !== undefined ? (<><input type="submit" value="delete" onClick={() => deleteconection(member.deleteid)} />
                                         <span>
 
                                             {member.conection}
