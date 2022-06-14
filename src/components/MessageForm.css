@@ -1,63 +1,100 @@
 .messages-output {
-    height: 80vh;
-    border: 1px solid lightgray;
-    overflow-y: scroll;
-    margin-bottom: 20px;
+  height: 80vh;
+  border: 1px solid lightgray;
+  overflow-y: scroll;
+  margin-bottom: 20px;
 }
 
 .message-inner {
-    margin-left: 20px;
-    margin-bottom: 10px;
-    padding: 10px;
-    min-width: 200px;
-    max-width: 90%;
-    text-align: left;
-    min-height: 80px;
-    font: 400 1em, sans-serif;
-    display: inline-block;
-    border-radius: 10px;
-    background-color: #d1e7dd;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 450px;
+  text-align: left;
+  height: auto;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: hsl(167, 81%, 38%);
+  position: relative;
+}
+
+.user-message {
+  display: flex;
+  align-items: center;
+}
+
+.user-message-input {
+  width: 98%;
+  padding-left: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-message-input > .user-message-left > .message-content {
+  word-break: break-all;
+  white-space: normal;
 }
 
 .incoming-message .message-inner {
-    background-color: #ffdab9;
+  background-color: #c2b115;
 }
 
 .incoming-message {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
-}
-
-.message-timestamp-left {
-    font-size: 0.85em;
-    font-weight: 300;
-    margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }
 
 .message-sender {
-    margin-bottom: 5px;
-    font-weight: bold;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .message-date-indicator {
-    width: 150px;
-    margin: 0 auto;
+  width: 150px;
+  margin: 0 auto;
 }
 
 .conversation-info {
-    padding: 0;
-    margin: 0 auto;
-    text-align: center;
-    height: 100px;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  height: 100px;
 }
 
 .conversation-profile-pic {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin: 10px auto;
-    margin-bottom: 30px;
-    border-radius: 50%;
-    margin-left: 10px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.message-timestamp-left {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.send-button {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.input-message-field {
+  flex: 0.85;
+}
+
+.message-send-button {
+  flex: 0.15;
+}
+
+@media (max-width: 500px) {
+  .message-inner {
+    width: 270px;
+  }
 }
