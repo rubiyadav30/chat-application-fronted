@@ -39,14 +39,14 @@ function Signup() {
     setUploadingImg(true);
     let a = "";
     await axios
-      .post("http://127.0.0.1:5001/upload", data, config)
+      .post("http://192.168.1.70:5001/upload", data, config)
 
       .then((res) => {
         a = res.data.filename;
 
         setUploadingImg(false);
       });
-    return "http://127.0.0.1:5001/uploads/" + a;
+    return "http://192.168.1.70:5001/uploads/" + a;
   }
 
   async function handleSignup(e) {
